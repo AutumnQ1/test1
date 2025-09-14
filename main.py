@@ -15,7 +15,6 @@ import uiautomator2 as u2
 
 d = u2.connect("192.168.1.4:5555")
 
-
 #网页
 d.press("home")
 d.press("home")
