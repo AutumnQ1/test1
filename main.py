@@ -1,16 +1,44 @@
-# 这是一个示例 Python 脚本。
+# pyinstaller --onefile --add-data "../venv/Lib/site-packages/uiautomator2;uiautomator2" phone.py
+import time
+import uiautomator2 as u2
 
-# 按 Shift+F10 执行或将其替换为您的代码。
-# 按 双击 Shift 在所有地方搜索类、文件、工具窗口、操作和设置。
+# 连接设备
+# d = u2.connect("192.168.0.142:5555")
+
+# d = u2.connect("192.168.0.103:5555")
+
+# d = u2.connect("192.168.71.103:5555")
+
+# d = u2.connect("192.168.0.13:5555")
+# adb tcpip 5555
+# adb connect 192.168.1.4:5555
+
+d = u2.connect("192.168.1.4:5555")
 
 
-def print_hi(name):
-    # 在下面的代码行中使用断点来调试脚本。
-    print(f'Hi, {name}')  # 按 Ctrl+F8 切换断点。
+#网页
+d.press("home")
+d.press("home")
+d(description="Edge").click()
+d(resourceId="com.microsoft.emmx:id/edge_location_bar_center").click()
+time.sleep(1)
+d.click(0.526, 0.331)
+d(resourceId="com.microsoft.emmx:id/overflow_button_bottom").click()
+d.xpath('//*[@resource-id="com.microsoft.emmx:id/grid_view"]/android.widget.FrameLayout[7]/android.view.ViewGroup[1]').click()
+d(resourceId="com.microsoft.emmx:id/name", text="篡改猴").click()
+time.sleep(1)
+d.xpath('//*[@text="开始 ("]').click()
+
+#新闻
 
 
-# 按装订区域中的绿色按钮以运行脚本。
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
+d.press("home")
+d.xpath('//*[@text="微软必应"]').click()
+for i in range(25):
+    d.swipe(0.816, 0.697,0.806, 0.144,0.8)
+    time.sleep(1)
+    d.click(0.496, 0.4)
+    time.sleep(1)
+    d.swipe(0.816, 0.697, 0.806, 0.144, 0.8)
+    time.sleep(7)
+    d.press("back")
