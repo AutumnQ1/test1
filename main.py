@@ -30,7 +30,6 @@ d.xpath('//*[@text="开始 ("]').click()
 
 #新闻
 
-
 d.press("home")
 d.xpath('//*[@text="微软必应"]').click()
 for i in range(25):
